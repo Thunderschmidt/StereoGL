@@ -1,0 +1,39 @@
+# Project: StGL_TestPrg
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = obj/input3DO.o obj/StereoGL.o obj/main.o obj/ctload.o $(RES)
+LINKOBJ  = obj/input3DO.o obj/StereoGL.o obj/main.o obj/ctload.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib"  ../../lib/libagl.a ../../lib/liballeg.a  ../../lib/libuser32.a ../../lib/libgdi32.a ../../lib/libopengl32.a ../../lib/libglu32.a   ../../lib/libglaux.a   ../../lib/libstdc++.a  -g3 -mwindows 
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/MinGW/include" 
+BIN  = StGL_TestPrg.exe
+CXXFLAGS = $(CXXINCS)   -fexceptions -g3 -mwindows
+CFLAGS = $(INCS)   -fexceptions -g3 -mwindows
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before StGL_TestPrg.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "StGL_TestPrg.exe" $(LIBS)
+
+obj/input3DO.o: input3DO.c
+	$(CPP) -c input3DO.c -o obj/input3DO.o $(CXXFLAGS)
+
+obj/StereoGL.o: StereoGL.c
+	$(CPP) -c StereoGL.c -o obj/StereoGL.o $(CXXFLAGS)
+
+obj/main.o: main.c
+	$(CPP) -c main.c -o obj/main.o $(CXXFLAGS)
+
+obj/ctload.o: ctload.c
+	$(CPP) -c ctload.c -o obj/ctload.o $(CXXFLAGS)
